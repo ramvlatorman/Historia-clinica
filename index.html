@@ -13,15 +13,13 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background: white;
             border-radius: 15px;
@@ -30,7 +28,7 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3c72 100%);
             color: white;
             padding: 30px;
             text-align: center;
@@ -39,36 +37,44 @@
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .header p {
+            font-size: 1.2em;
             opacity: 0.9;
-            font-size: 1.1em;
         }
 
-        .form-container {
+        .content {
             padding: 40px;
         }
 
         .section {
-            margin-bottom: 40px;
+            margin-bottom: 35px;
+            border: 2px solid #e1e8ed;
+            border-radius: 12px;
             padding: 25px;
-            border-radius: 10px;
-            background: #f8f9fa;
-            border-left: 4px solid #3498db;
+            background: #f8fafc;
+            transition: all 0.3s ease;
         }
 
-        .section h2 {
-            color: #2c3e50;
+        .section:hover {
+            border-color: #2c5aa0;
+            box-shadow: 0 5px 15px rgba(44, 90, 160, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            color: #2c5aa0;
             margin-bottom: 20px;
-            font-size: 1.5em;
             display: flex;
             align-items: center;
+            border-bottom: 2px solid #2c5aa0;
+            padding-bottom: 10px;
         }
 
-        .section h2::before {
-            content: "📋";
+        .section-title::before {
+            content: attr(data-icon);
             margin-right: 10px;
             font-size: 1.2em;
         }
@@ -79,37 +85,31 @@
 
         .form-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
+            margin-bottom: 20px;
         }
 
         label {
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #2c3e50;
+            color: #2c5aa0;
         }
 
-        input, select, textarea {
+        input, textarea, select {
             width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e6ed;
+            padding: 12px;
+            border: 2px solid #e1e8ed;
             border-radius: 8px;
             font-size: 16px;
-            transition: all 0.3s ease;
-            background: white;
+            transition: border-color 0.3s ease;
         }
 
-        input:focus, select:focus, textarea:focus {
+        input:focus, textarea:focus, select:focus {
             outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            border-color: #2c5aa0;
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
         }
 
         textarea {
@@ -117,475 +117,379 @@
             min-height: 100px;
         }
 
-        .checkbox-group {
+        .vital-signs {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            background: white;
-            border-radius: 5px;
-            border: 1px solid #e0e6ed;
-        }
-
-        .checkbox-item input[type="checkbox"] {
-            width: auto;
-            margin-right: 10px;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .buttons {
-            display: flex;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
         }
 
-        button {
-            padding: 15px 30px;
+        .vital-signs input {
+            text-align: center;
+            font-weight: bold;
+            color: #2c5aa0;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e1e8ed;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3c72 100%);
+            color: white;
+            padding: 15px 40px;
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 50px;
+            font-size: 18px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            min-width: 150px;
+            margin: 0 10px;
+            box-shadow: 0 4px 15px rgba(44, 90, 160, 0.3);
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 90, 160, 0.4);
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
-            color: white;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
         }
 
-        .btn-success {
-            background: linear-gradient(135deg, #27ae60, #229954);
-            color: white;
+        .footer {
+            background: #f8fafc;
+            padding: 20px;
+            text-align: center;
+            color: #6c757d;
+            border-top: 1px solid #e1e8ed;
         }
 
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .alert {
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 8px;
-            display: none;
-        }
-
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: #e0e6ed;
-            border-radius: 3px;
-            margin: 20px 0;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #3498db, #2980b9);
-            width: 0%;
-            transition: width 0.3s ease;
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Historia Clínica Digital</h1>
-            <p>Sistema completo de registro médico</p>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
+            <h1>📋 HISTORIA CLÍNICA DIGITAL</h1>
+            <p>Sistema Integral de Registro Médico</p>
         </div>
 
-        <div class="form-container">
+        <div class="content">
             <form id="historiaClinica">
                 <!-- DATOS PERSONALES -->
                 <div class="section">
-                    <h2>Datos Personales</h2>
+                    <h2 class="section-title" data-icon="👤">DATOS PERSONALES</h2>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="nombre">Nombre Completo *</label>
+                            <label for="nombre">Nombre Completo:</label>
                             <input type="text" id="nombre" name="nombre" required>
                         </div>
                         <div class="form-group">
-                            <label for="edad">Edad *</label>
+                            <label for="edad">Edad:</label>
                             <input type="number" id="edad" name="edad" min="0" max="120" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="sexo">Sexo *</label>
+                            <label for="sexo">Sexo:</label>
                             <select id="sexo" name="sexo" required>
-                                <option value="">Seleccionar</option>
+                                <option value="">Seleccionar...</option>
                                 <option value="masculino">Masculino</option>
                                 <option value="femenino">Femenino</option>
                                 <option value="otro">Otro</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="telefono">Teléfono</label>
+                            <label for="telefono">Teléfono:</label>
                             <input type="tel" id="telefono" name="telefono">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="direccion">Dirección:</label>
+                            <input type="text" id="direccion" name="direccion">
+                        </div>
+                        <div class="form-group">
+                            <label for="ocupacion">Ocupación:</label>
+                            <input type="text" id="ocupacion" name="ocupacion">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SIGNOS VITALES -->
+                <div class="section">
+                    <h2 class="section-title" data-icon="🩺">SIGNOS VITALES</h2>
+                    <div class="vital-signs">
+                        <div class="form-group">
+                            <label for="presion">Presión Arterial:</label>
+                            <input type="text" id="presion" name="presion" placeholder="120/80">
+                        </div>
+                        <div class="form-group">
+                            <label for="temperatura">Temperatura (°C):</label>
+                            <input type="number" id="temperatura" name="temperatura" step="0.1" placeholder="36.5">
+                        </div>
+                        <div class="form-group">
+                            <label for="pulso">Pulso (lpm):</label>
+                            <input type="number" id="pulso" name="pulso" placeholder="70">
+                        </div>
+                        <div class="form-group">
+                            <label for="respiracion">Respiración (rpm):</label>
+                            <input type="number" id="respiracion" name="respiracion" placeholder="16">
+                        </div>
+                        <div class="form-group">
+                            <label for="peso">Peso (kg):</label>
+                            <input type="number" id="peso" name="peso" step="0.1" placeholder="70.0">
+                        </div>
+                        <div class="form-group">
+                            <label for="talla">Talla (cm):</label>
+                            <input type="number" id="talla" name="talla" placeholder="170">
                         </div>
                     </div>
                 </div>
 
                 <!-- MOTIVO DE CONSULTA -->
                 <div class="section">
-                    <h2>Motivo de Consulta</h2>
+                    <h2 class="section-title" data-icon="🏥">MOTIVO DE CONSULTA</h2>
                     <div class="form-group">
-                        <label for="motivoConsulta">Describe el motivo principal de tu consulta *</label>
-                        <textarea id="motivoConsulta" name="motivoConsulta" required placeholder="Ej: Dolor de cabeza desde hace 3 días..."></textarea>
+                        <label for="motivo">Motivo Principal de la Consulta:</label>
+                        <textarea id="motivo" name="motivo" placeholder="Describa el motivo principal de la consulta..." required></textarea>
                     </div>
                 </div>
 
                 <!-- SÍNTOMAS ACTUALES -->
                 <div class="section">
-                    <h2>Síntomas Actuales</h2>
-                    <div class="form-group">
-                        <label>¿Qué síntomas presentas actualmente? (Selecciona todos los que apliquen)</label>
-                        <div class="checkbox-group">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="dolor" name="sintomas" value="dolor">
-                                <label for="dolor">Dolor</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="fiebre" name="sintomas" value="fiebre">
-                                <label for="fiebre">Fiebre</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="nauseas" name="sintomas" value="nauseas">
-                                <label for="nauseas">Náuseas</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="mareos" name="sintomas" value="mareos">
-                                <label for="mareos">Mareos</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="fatiga" name="sintomas" value="fatiga">
-                                <label for="fatiga">Fatiga</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="tos" name="sintomas" value="tos">
-                                <label for="tos">Tos</label>
-                            </div>
+                    <h2 class="section-title" data-icon="🤒">SÍNTOMAS ACTUALES</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sintomas">Síntomas:</label>
+                            <textarea id="sintomas" name="sintomas" placeholder="Describa los síntomas actuales..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="duracion">Duración:</label>
+                            <input type="text" id="duracion" name="duracion" placeholder="Ej: 3-7 días">
                         </div>
                     </div>
-
-                    <div class="form-group" id="dolorDetails" style="display: none;">
-                        <label for="tipoDolorUbicacion">Ubicación y tipo de dolor</label>
-                        <textarea id="tipoDolorUbicacion" name="tipoDolorUbicacion" placeholder="Describe dónde sientes el dolor y cómo es (punzante, sordo, constante, etc.)"></textarea>
-                    </div>
-
                     <div class="form-group">
-                        <label for="duracionSintomas">¿Desde cuándo tienes estos síntomas?</label>
-                        <select id="duracionSintomas" name="duracionSintomas">
-                            <option value="">Seleccionar</option>
-                            <option value="horas">Pocas horas</option>
-                            <option value="1-2-dias">1-2 días</option>
-                            <option value="3-7-dias">3-7 días</option>
-                            <option value="semanas">Varias semanas</option>
-                            <option value="meses">Varios meses</option>
-                        </select>
+                        <label for="detalles_dolor">Detalles del Dolor/Molestia:</label>
+                        <textarea id="detalles_dolor" name="detalles_dolor" placeholder="Ubicación, intensidad, características del dolor..."></textarea>
+                    </div>
+                </div>
+
+                <!-- EXPLORACIÓN FÍSICA -->
+                <div class="section">
+                    <h2 class="section-title" data-icon="🔍">EXPLORACIÓN FÍSICA</h2>
+                    <div class="form-group">
+                        <label for="exploracion_general">Exploración General:</label>
+                        <textarea id="exploracion_general" name="exploracion_general" placeholder="Estado general del paciente, aspecto, actitud..."></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cabeza_cuello">Cabeza y Cuello:</label>
+                            <textarea id="cabeza_cuello" name="cabeza_cuello" placeholder="Hallazgos en cabeza y cuello..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="torax">Tórax:</label>
+                            <textarea id="torax" name="torax" placeholder="Hallazgos en tórax..."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="abdomen">Abdomen:</label>
+                            <textarea id="abdomen" name="abdomen" placeholder="Hallazgos en abdomen..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="extremidades">Extremidades:</label>
+                            <textarea id="extremidades" name="extremidades" placeholder="Hallazgos en extremidades..."></textarea>
+                        </div>
                     </div>
                 </div>
 
                 <!-- ANTECEDENTES MÉDICOS -->
                 <div class="section">
-                    <h2>Antecedentes Médicos</h2>
+                    <h2 class="section-title" data-icon="📚">ANTECEDENTES MÉDICOS</h2>
                     <div class="form-group">
-                        <label for="enfermedadesPrevias">¿Has tenido alguna enfermedad importante?</label>
-                        <textarea id="enfermedadesPrevias" name="enfermedadesPrevias" placeholder="Ej: Diabetes, hipertensión, asma, etc."></textarea>
+                        <label for="enfermedades">Enfermedades Previas:</label>
+                        <textarea id="enfermedades" name="enfermedades" placeholder="Diabetes, hipertensión, etc."></textarea>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="cirugiasPrevias">¿Has tenido cirugías?</label>
-                        <textarea id="cirugiasPrevias" name="cirugiasPrevias" placeholder="Describe qué cirugías y cuándo"></textarea>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cirugias">Cirugías:</label>
+                            <textarea id="cirugias" name="cirugias" placeholder="Cirugías previas y fechas..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="alergias">Alergias:</label>
+                            <textarea id="alergias" name="alergias" placeholder="Alergias conocidas..."></textarea>
+                        </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="alergias">¿Tienes alergias conocidas?</label>
-                        <textarea id="alergias" name="alergias" placeholder="Medicamentos, alimentos, sustancias, etc."></textarea>
+                        <label for="antecedentes_familiares">Antecedentes Familiares:</label>
+                        <textarea id="antecedentes_familiares" name="antecedentes_familiares" placeholder="Enfermedades familiares relevantes..."></textarea>
                     </div>
                 </div>
 
                 <!-- MEDICAMENTOS -->
                 <div class="section">
-                    <h2>Medicamentos</h2>
+                    <h2 class="section-title" data-icon="💊">MEDICAMENTOS</h2>
                     <div class="form-group">
-                        <label for="medicamentosActuales">¿Tomas algún medicamento actualmente?</label>
-                        <textarea id="medicamentosActuales" name="medicamentosActuales" placeholder="Nombre del medicamento, dosis y frecuencia"></textarea>
+                        <label for="medicamentos_actuales">Medicamentos Actuales:</label>
+                        <textarea id="medicamentos_actuales" name="medicamentos_actuales" placeholder="Medicamentos que toma actualmente con dosis..."></textarea>
                     </div>
                 </div>
 
                 <!-- ESTILO DE VIDA -->
                 <div class="section">
-                    <h2>Estilo de Vida</h2>
+                    <h2 class="section-title" data-icon="🚭">ESTILO DE VIDA</h2>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="fumas">¿Fumas?</label>
-                            <select id="fumas" name="fumas">
-                                <option value="">Seleccionar</option>
-                                <option value="no">No</option>
-                                <option value="si">Sí</option>
-                                <option value="ocasionalmente">Ocasionalmente</option>
+                            <label for="tabaco">Tabaco:</label>
+                            <select id="tabaco" name="tabaco">
+                                <option value="">Seleccionar...</option>
+                                <option value="no-fumador">No fumador</option>
+                                <option value="fumador">Fumador activo</option>
                                 <option value="ex-fumador">Ex-fumador</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="alcohol">¿Consumes alcohol?</label>
+                            <label for="alcohol">Alcohol:</label>
                             <select id="alcohol" name="alcohol">
-                                <option value="">Seleccionar</option>
-                                <option value="no">No</option>
+                                <option value="">Seleccionar...</option>
+                                <option value="no-bebe">No bebe</option>
                                 <option value="ocasionalmente">Ocasionalmente</option>
-                                <option value="regularmente">Regularmente</option>
+                                <option value="frecuentemente">Frecuentemente</option>
                             </select>
                         </div>
                     </div>
-                </div>
-
-                <!-- INFORMACIÓN ADICIONAL -->
-                <div class="section">
-                    <h2>Información Adicional</h2>
                     <div class="form-group">
-                        <label for="informacionAdicional">¿Hay algo más que consideres importante mencionar?</label>
-                        <textarea id="informacionAdicional" name="informacionAdicional" placeholder="Cualquier información adicional que pueda ser relevante"></textarea>
+                        <label for="ejercicio">Actividad Física:</label>
+                        <textarea id="ejercicio" name="ejercicio" placeholder="Tipo y frecuencia de ejercicio..."></textarea>
                     </div>
                 </div>
 
-                <div class="alert alert-success" id="alertSuccess">
-                    ¡Información guardada correctamente!
+                <!-- DIAGNÓSTICO -->
+                <div class="section">
+                    <h2 class="section-title" data-icon="🎯">DIAGNÓSTICO</h2>
+                    <div class="form-group">
+                        <label for="diagnostico_presuntivo">Diagnóstico Presuntivo:</label>
+                        <textarea id="diagnostico_presuntivo" name="diagnostico_presuntivo" placeholder="Diagnóstico principal sospechado..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="diagnosticos_diferenciales">Diagnósticos Diferenciales:</label>
+                        <textarea id="diagnosticos_diferenciales" name="diagnosticos_diferenciales" placeholder="Otros diagnósticos a considerar..."></textarea>
+                    </div>
                 </div>
 
-                <div class="buttons">
-                    <button type="button" class="btn-secondary" onclick="guardarBorrador()">💾 Guardar Borrador</button>
-                    <button type="button" class="btn-primary" onclick="cargarBorrador()">📂 Cargar Borrador</button>
-                    <button type="button" class="btn-success" onclick="generarResumen()">📱 Enviar por WhatsApp</button>
+                <!-- PLAN DE TRATAMIENTO -->
+                <div class="section">
+                    <h2 class="section-title" data-icon="📋">PLAN DE TRATAMIENTO</h2>
+                    <div class="form-group">
+                        <label for="tratamiento">Tratamiento Indicado:</label>
+                        <textarea id="tratamiento" name="tratamiento" placeholder="Medicamentos, dosis, duración..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="estudios">Estudios Solicitados:</label>
+                        <textarea id="estudios" name="estudios" placeholder="Laboratorios, estudios de imagen, etc."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="recomendaciones">Recomendaciones:</label>
+                        <textarea id="recomendaciones" name="recomendaciones" placeholder="Recomendaciones generales, cuidados, etc."></textarea>
+                    </div>
+                </div>
+
+                <!-- SEGUIMIENTO -->
+                <div class="section">
+                    <h2 class="section-title" data-icon="📅">SEGUIMIENTO</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="proxima_cita">Próxima Cita:</label>
+                            <input type="date" id="proxima_cita" name="proxima_cita">
+                        </div>
+                        <div class="form-group">
+                            <label for="tiempo_seguimiento">Tiempo de Seguimiento:</label>
+                            <input type="text" id="tiempo_seguimiento" name="tiempo_seguimiento" placeholder="Ej: 1 semana, 1 mes">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="observaciones">Observaciones Adicionales:</label>
+                        <textarea id="observaciones" name="observaciones" placeholder="Observaciones adicionales del médico..."></textarea>
+                    </div>
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" class="btn">💾 Guardar Historia Clínica</button>
+                    <button type="button" class="btn btn-secondary" onclick="imprimirHistoria()">🖨️ Imprimir</button>
+                    <button type="button" class="btn" onclick="limpiarFormulario()">🗑️ Limpiar</button>
                 </div>
             </form>
+        </div>
+
+        <div class="footer">
+            <p>📅 <strong>Fecha:</strong> <span id="fecha-actual"></span> | 🏥 Historia Clínica Digital v2.0</p>
         </div>
     </div>
 
     <script>
-        // Funcionalidad para mostrar/ocultar campos según respuestas
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mostrar detalles de dolor si se selecciona dolor
-            const dolorCheckbox = document.getElementById('dolor');
-            const dolorDetails = document.getElementById('dolorDetails');
-            
-            dolorCheckbox.addEventListener('change', function() {
-                if (this.checked) {
-                    dolorDetails.style.display = 'block';
-                } else {
-                    dolorDetails.style.display = 'none';
-                }
-            });
+        // Mostrar fecha actual
+        document.getElementById('fecha-actual').textContent = new Date().toLocaleDateString('es-ES');
 
-            // Actualizar barra de progreso
-            const inputs = document.querySelectorAll('input, select, textarea');
-            inputs.forEach(input => {
-                input.addEventListener('input', updateProgress);
-            });
-
-            // Cargar borrador automáticamente si existe
-            cargarBorradorAutomatico();
+        // Manejar envío del formulario
+        document.getElementById('historiaClinica').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Historia clínica guardada exitosamente!');
         });
 
-        function updateProgress() {
-            const form = document.getElementById('historiaClinica');
-            const formData = new FormData(form);
-            const totalFields = document.querySelectorAll('input[required], select[required], textarea[required]').length;
-            let filledFields = 0;
-
-            // Contar campos requeridos completados
-            document.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
-                if (field.value.trim() !== '') {
-                    filledFields++;
-                }
-            });
-
-            const progress = (filledFields / totalFields) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
+        // Función para imprimir
+        function imprimirHistoria() {
+            window.print();
         }
 
-        function guardarBorrador() {
-            const form = document.getElementById('historiaClinica');
-            const formData = new FormData(form);
-            const data = {};
-
-            // Convertir FormData a objeto
-            for (let [key, value] of formData.entries()) {
-                if (data[key]) {
-                    if (Array.isArray(data[key])) {
-                        data[key].push(value);
-                    } else {
-                        data[key] = [data[key], value];
-                    }
-                } else {
-                    data[key] = value;
-                }
+        // Función para limpiar formulario
+        function limpiarFormulario() {
+            if (confirm('¿Está seguro de que desea limpiar todos los campos?')) {
+                document.getElementById('historiaClinica').reset();
             }
-
-            // Guardar en localStorage
-            localStorage.setItem('historiaClinicaBorrador', JSON.stringify(data));
-            
-            // Mostrar mensaje de éxito
-            const alert = document.getElementById('alertSuccess');
-            alert.style.display = 'block';
-            alert.textContent = '💾 Borrador guardado correctamente';
-            
-            setTimeout(() => {
-                alert.style.display = 'none';
-            }, 3000);
         }
 
-        function cargarBorrador() {
-            const borrador = localStorage.getItem('historiaClinicaBorrador');
-            if (borrador) {
-                const data = JSON.parse(borrador);
+        // Calcular IMC automáticamente
+        document.getElementById('peso').addEventListener('input', calcularIMC);
+        document.getElementById('talla').addEventListener('input', calcularIMC);
+
+        function calcularIMC() {
+            const peso = parseFloat(document.getElementById('peso').value);
+            const talla = parseFloat(document.getElementById('talla').value) / 100; // convertir cm a m
+            
+            if (peso && talla) {
+                const imc = peso / (talla * talla);
+                let categoria = '';
                 
-                // Llenar el formulario con los datos guardados
-                Object.keys(data).forEach(key => {
-                    const element = document.querySelector(`[name="${key}"]`);
-                    if (element) {
-                        if (element.type === 'checkbox') {
-                            const checkboxes = document.querySelectorAll(`[name="${key}"]`);
-                            const values = Array.isArray(data[key]) ? data[key] : [data[key]];
-                            checkboxes.forEach(checkbox => {
-                                checkbox.checked = values.includes(checkbox.value);
-                            });
-                        } else {
-                            element.value = data[key];
-                        }
-                    }
-                });
-
-                // Mostrar mensaje de éxito
-                const alert = document.getElementById('alertSuccess');
-                alert.style.display = 'block';
-                alert.textContent = '📂 Borrador cargado correctamente';
+                if (imc < 18.5) categoria = 'Bajo peso';
+                else if (imc < 25) categoria = 'Normal';
+                else if (imc < 30) categoria = 'Sobrepeso';
+                else categoria = 'Obesidad';
                 
-                setTimeout(() => {
-                    alert.style.display = 'none';
-                }, 3000);
-
-                updateProgress();
-            } else {
-                alert('No hay ningún borrador guardado.');
+                // Mostrar IMC en consola o crear un campo para mostrarlo
+                console.log(`IMC: ${imc.toFixed(1)} - ${categoria}`);
             }
         }
-
-        function cargarBorradorAutomatico() {
-            const borrador = localStorage.getItem('historiaClinicaBorrador');
-            if (borrador) {
-                // Mostrar opción de cargar borrador automáticamente
-                if (confirm('Se encontró un borrador guardado. ¿Deseas cargarlo?')) {
-                    cargarBorrador();
-                }
-            }
-        }
-
-        function generarResumen() {
-            const form = document.getElementById('historiaClinica');
-            const formData = new FormData(form);
-            
-            let resumen = "📋 *HISTORIA CLÍNICA DIGITAL*\n\n";
-            
-            // Datos personales
-            resumen += "👤 *DATOS PERSONALES*\n";
-            resumen += `• Nombre: ${formData.get('nombre') || 'No especificado'}\n`;
-            resumen += `• Edad: ${formData.get('edad') || 'No especificado'}\n`;
-            resumen += `• Sexo: ${formData.get('sexo') || 'No especificado'}\n`;
-            resumen += `• Teléfono: ${formData.get('telefono') || 'No especificado'}\n\n`;
-            
-            // Motivo de consulta
-            resumen += "🏥 *MOTIVO DE CONSULTA*\n";
-            resumen += `${formData.get('motivoConsulta') || 'No especificado'}\n\n`;
-            
-            // Síntomas
-            resumen += "🤒 *SÍNTOMAS ACTUALES*\n";
-            const sintomas = formData.getAll('sintomas');
-            if (sintomas.length > 0) {
-                resumen += `• Síntomas: ${sintomas.join(', ')}\n`;
-            }
-            resumen += `• Duración: ${formData.get('duracionSintomas') || 'No especificado'}\n`;
-            if (formData.get('tipoDolorUbicacion')) {
-                resumen += `• Detalles del dolor: ${formData.get('tipoDolorUbicacion')}\n`;
-            }
-            resumen += "\n";
-            
-            // Antecedentes
-            resumen += "📚 *ANTECEDENTES MÉDICOS*\n";
-            resumen += `• Enfermedades previas: ${formData.get('enfermedadesPrevias') || 'Ninguna'}\n`;
-            resumen += `• Cirugías: ${formData.get('cirugiasPrevias') || 'Ninguna'}\n`;
-            resumen += `• Alergias: ${formData.get('alergias') || 'Ninguna'}\n\n`;
-            
-            // Medicamentos
-            resumen += "💊 *MEDICAMENTOS*\n";
-            resumen += `• Medicamentos actuales: ${formData.get('medicamentosActuales') || 'Ninguno'}\n\n`;
-            
-            // Estilo de vida
-            resumen += "🚭 *ESTILO DE VIDA*\n";
-            resumen += `• Tabaco: ${formData.get('fumas') || 'No especificado'}\n`;
-            resumen += `• Alcohol: ${formData.get('alcohol') || 'No especificado'}\n\n`;
-            
-            // Información adicional
-            if (formData.get('informacionAdicional')) {
-                resumen += "ℹ️ *INFORMACIÓN ADICIONAL*\n";
-                resumen += `${formData.get('informacionAdicional')}\n\n`;
-            }
-            
-            resumen += "---\n";
-            resumen += `📅 Fecha: ${new Date().toLocaleDateString('es-ES')}\n`;
-            resumen += "🏥 Historia Clínica Digital";
-            
-            // Crear URL de WhatsApp
-            const mensaje = encodeURIComponent(resumen);
-            const urlWhatsApp = `https://wa.me/?text=${mensaje}`;
-            
-            // Abrir WhatsApp
-            window.open(urlWhatsApp, '_blank');
-        }
-
-        // Auto-guardar cada 30 segundos
-        setInterval(() => {
-            const form = document.getElementById('historiaClinica');
-            const inputs = form.querySelectorAll('input, select, textarea');
-            let hasContent = false;
-            
-            inputs.forEach(input => {
-                if (input.value.trim() !== '') {
-                    hasContent = true;
-                }
-            });
-            
-            if (hasContent) {
-                guardarBorrador();
-            }
-        }, 30000);
     </script>
 </body>
 </html>
